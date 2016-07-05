@@ -190,7 +190,7 @@ tee /etc/rsyslog.d/80-docker-nginx-elasticsearch.conf <<-'EOF'
     <br>iptables -A INPUT -p tcp --dport 5601 -s 172.17.0.0/16 -j ACCEPT
     <br>iptables -A INPUT -p tcp --dport 5601 -j REJECT
     </p>
-    <p> There are of course many other things that can be done. Let's finish by a quick mention to the nightmare that is proxying kibana, despite multiple docs and attempts, using <code>upstream<code> in nginx and modifying <code>kibana.yml<code>, it seems that moving kibana away from root is just not feasible for the time being. </p>
+    <p> There are of course many other things that can be done. Let's finish by a quick mention to the nightmare that is proxying kibana, despite multiple docs and attempts, using <code>upstream</code> in nginx and modifying <code>kibana.yml</code>, it seems that moving kibana away from root is just not feasible for the time being, short of maybe adding a proxy/reverse proxy layer using apache as shown in the doc.</p>
     <p> As a final word, many thanks for letting me dig into this cool tech for a very well designed and challenging test. </p>
     </code>
     </div>
