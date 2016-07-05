@@ -1,0 +1,199 @@
+<html>
+    <head>
+        <title>How does this even</title>
+        <style>
+        body{
+            font-family: Helvetica, Arial, sans-serif;
+        }
+	pre, code {
+	    font-family: monospace, monospace;
+	    font-size: 12px;
+	}
+	pre {
+            overflow: auto;
+        }
+        pre > code {
+            display: block;
+            padding: 1rem;
+        }
+        .message{
+            width:1100px;
+            padding:20px 40px;
+            margin:0 auto;
+            background-color:#f9f9f9;
+            border:1px solid #ddd;
+        }
+        center{
+            margin:40px 0;
+        }
+        h1{
+            font-size: 18px;
+            line-height: 26px;
+        }
+        p{
+            font-size: 14px;
+        }
+        </style>
+    </head>
+    <body>
+    <div class=message>
+    <h1> Congratulations for making it all the way here </h1>
+    <p> The landing page can be modified by changing the default index.htm. </p>
+    <p> This page contains all of the relevant links and information used to answer "The Problem". </p>
+    <p> Please leave this place as messy as you found it. Cheers. </p>
+    <p> -O </p>
+    </div>
+        <center><img src="theplan.png" alt=""></center>
+	    <center><p> Exhibit A: "The Plan" </p></center>
+    <div class=message>
+	<h1> Useful Links </h1>
+    <p> AWS </p>
+    <p><a href="http://docs.aws.amazon.com/AWSEC2/latest/CommandLineReference/ec2-cli-launch-instance.html" target="_blank">http://docs.aws.amazon.com/AWSEC2/latest/CommandLineReference/ec2-cli-launch-instance.html</a></p>
+    <p><a href="http://docs.aws.amazon.com/cli/latest/reference/ec2/run-instances.html" target="_blank">http://docs.aws.amazon.com/cli/latest/reference/ec2/run-instances.html</a></p>
+    <p><a href="http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html" target="_blank">http://docs.aws.amazon.com/cli/latest/reference/ec2/describe-images.html</a></p>
+    <p><a href="https://cloud-images.ubuntu.com/locator/ec2/" target="_blank">https://cloud-images.ubuntu.com/locator/ec2/</a></p>
+    <p><a href="https://aws.amazon.com/amazon-linux-ami/" target="_blank">https://aws.amazon.com/amazon-linux-ami/</a></p>
+    <p><a href="http://docs.aws.amazon.com/cli/latest/reference/ec2/authorize-security-group-ingress.html" target="_blank">http://docs.aws.amazon.com/cli/latest/reference/ec2/authorize-security-group-ingress.html</a></p>
+    <p><a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html" target="_blank">http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html</a></p>
+    <p><a href="http://blog.xi-group.com/2014/06/small-tip-use-aws-cli-to-create-instances-with-bigger-root-partitions/" target="_blank">http://blog.xi-group.com/2014/06/small-tip-use-aws-cli-to-create-instances-with-bigger-root-partitions/</a></p>
+    <p> Docker </p>
+     <p><a href="http://prakhar.me/docker-curriculum/" target="_blank">http://prakhar.me/docker-curriculum/</a></p>
+     <p><a href="https://dantehranian.wordpress.com/2015/03/25/how-should-i-get-application-configuration-into-my-docker-containers/" target="_blank">https://dantehranian.wordpress.com/2015/03/25/how-should-i-get-application-configuration-into-my-docker-containers/</a></p>
+     <p><a href="https://blog.docker.com/2015/04/tips-for-deploying-nginx-official-image-with-docker/" target="_blank">https://blog.docker.com/2015/04/tips-for-deploying-nginx-official-image-with-docker/</a></p>
+     <p><a href="http://nathanleclaire.com/blog/2015/04/27/automating-docker-logging-elasticsearch-logstash-kibana-and-logspout/" target="_blank">http://nathanleclaire.com/blog/2015/04/27/automating-docker-logging-elasticsearch-logstash-kibana-and-logspout/</a></p>
+     <p><a href="https://docs.docker.com/engine/admin/logging/overview/" target="_blank">https://docs.docker.com/engine/admin/logging/overview/</a></p>
+     <p><a href="https://docs.docker.com/engine/getstarted/step_one/#step-3-verify-your-installation" target="_blank">https://docs.docker.com/engine/getstarted/step_one/#step-3-verify-your-installation</a></p>
+     <p><a href="https://docs.docker.com/engine/installation/linux/centos/" target="_blank">https://docs.docker.com/engine/installation/linux/centos/</a></p>
+    <p> rsyslog, elasticsearch and kibana </p> 
+    <p><a href="http://www.rsyslog.com/doc/v8-stable/configuration/modules/omelasticsearch.html" target="_blank">http://www.rsyslog.com/doc/v8-stable/configuration/modules/omelasticsearch.html</a></p>
+     <p><a href="http://www.rsyslog.com/tag/kibana/" target="_blank">http://www.rsyslog.com/tag/kibana/</a></p>
+     <p><a href="https://hub.docker.com/_/kibana/" target="_blank">https://hub.docker.com/_/kibana/</a></p>
+     <p><a href="https://discuss.elastic.co/t/4-3-0-how-to-configure-your-nginx-balancer-and-apache-reverse-proxy/37351/2" target="_blank">https://discuss.elastic.co/t/4-3-0-how-to-configure-your-nginx-balancer-and-apache-reverse-proxy/37351/2</a></p>
+    </div>
+	<div class=message>
+	<h1> AWS prep </h1>
+    <p> Amazon AMI, even the latest, or more like the lamest, doesn't have tools versions worth commenting. Ubuntu 16.04 LTS it is. </p>
+    <p> Security blurb: see the dedicated section further below. Allow 0.0.0.0/0 is a ... very open way to do things.
+    <br> Also, kudos to the dude who figured out we can replace sda1 (xvda1) with a larger disk at creation time. Wow. </p> 
+    <code>
+    pip install awscli
+    <br>aws configure
+    <br>aws ec2 create-key-pair --key-name olikey --query 'KeyMaterial' --output text > olikey.pem
+    <br>aws ec2 create-security-group --group-name olisg --description "Oli security group"
+    <br>aws ec2 authorize-security-group-ingress --group-name olisg --protocol tcp --port 22 --cidr 0.0.0.0/0
+    <br>aws ec2 authorize-security-group-ingress --group-name olisg --protocol tcp --port 80 --cidr 0.0.0.0/0
+    <br>aws ec2 authorize-security-group-ingress --group-name olisg --protocol tcp --port 8001 --cidr 0.0.0.0/0
+    <br>aws ec2 run-instances --image-id ami-bf86aedc --instance-type m3.medium --key-name olikey --security-groups olisg --count 1  --block-device-mappings '[ {"DeviceName":"/dev/sda1","Ebs": { "VolumeSize": 50 } } ]'
+    </code>
+    <p> The resulting instance can be accessed with <code>ssh -i olikey.pem ubuntu@ec2-52-65-29-140.ap-southeast-2.compute.amazonaws.com </code></p>
+    <p> If required for automation, Public IP address and name can be extracted using <code>aws ec2 describe-instances --instance-ids i-a44215e1</code></p>
+    </div>
+    <div class=message>
+	<h1> System prep and software installs </h1>
+        <code>
+        <br>apt-get install docker docker.io rsyslog-elastics
+        <br>systemctl start docker
+        <br>systemctl enable docker
+        </code>
+    	</div>
+	<div class=message>
+	<h1> Pre run configuration </h1>
+	<p> Elastic search formating for rsyslogd </p>
+        <code>
+tee /etc/rsyslog.d/80-docker-nginx-elasticsearch.conf <<-'EOF'
+    <br>module(load="omelasticsearch")
+    <br>
+    <br># this is for index names to be like: logstash-YYYY.MM.DD
+    <br>template(name="logstash-index"
+    <br>  type="list") {
+    <br>    constant(value="logstash-")
+    <br>    property(name="timereported" dateFormat="rfc3339" position.from="1" position.to="4")
+    <br>    constant(value=".")
+    <br>    property(name="timereported" dateFormat="rfc3339" position.from="6" position.to="7")
+    <br>    constant(value=".")
+    <br>    property(name="timereported" dateFormat="rfc3339" position.from="9" position.to="10")
+    <br>}
+    <br>
+    <br># this is for formatting our syslog in JSON with @timestamp
+    <br>template(name="plain-syslog"
+    <br>  type="list") {
+    <br>    constant(value="{")
+    <br>      constant(value="\"@timestamp\":\"")     property(name="timereported" dateFormat="rfc3339")
+    <br>      constant(value="\",\"host\":\"")        property(name="hostname")
+    <br>      constant(value="\",\"severity\":\"")    property(name="syslogseverity-text")
+    <br>      constant(value="\",\"facility\":\"")    property(name="syslogfacility-text")
+    <br>      constant(value="\",\"tag\":\"")   property(name="syslogtag" format="json")
+    <br>      constant(value="\",\"message\":\"")    property(name="msg" format="json")
+    <br>    constant(value="\"}")
+    <br>}
+    <br>
+    <br># this is where we actually send the logs to Elasticsearch (localhost:9200 by default)
+    <br>:syslogtag, contains, "docker/nginx" action(type="omelasticsearch"
+    <br>    template="plain-syslog"
+    <br>    searchIndex="logstash-index"
+    <br>    dynSearchIndex="on")
+    <br>EOF
+	</code>
+	<p> nginx config with proxying of kibana and password protection. Remember to update <code>@@SERVERIP@@</code> with the eth0 internal IP.</p>
+	<code>
+    <br>server {
+    <br>    listen       80;
+    <br>    server_name  localhost;
+    <br>    location / {
+    <br>        root   /usr/share/nginx/html;
+    <br>        index  index.html index.htm;
+    <br>    }
+    <br>    error_page   500 502 503 504  /50x.html;
+    <br>    location = /50x.html {
+    <br>        root   /usr/share/nginx/html;
+    <br>    }
+    <br>}
+    <br>upstream web {
+    <br>    server @@SERVERIP@@:5601;
+    <br>    keepalive 5;
+    <br>}
+    <br>server {
+    <br>    listen 8001;
+    <br>    location / {
+    <br>        auth_basic "Restricted";
+    <br>        auth_basic_user_file /etc/nginx/conf.d/kibana.htpasswd;
+    <br>        proxy_pass http://web;
+    <br>        proxy_http_version 1.1;
+    <br>        proxy_set_header Connection "Keep-Alive";
+    <br>        proxy_set_header Proxy-Connection "Keep-Alive";
+    <br>    }
+    <br>    access_log /var/log/nginx/access-kiba.log;
+    <br>    error_log  /var/log/nginx/error-kiba.log;
+    <br>}
+	</code>
+	<p> Password access file <code>/etc/nginx/conf.d/kibana.htpasswd</code> User is <b>banaki</b> but the password is kept secret </p>
+	<code>
+    banaki:$apr1$72eq5mUO$FsTFzUZOfrb8luJW2KisA0
+	</code>
+	<p> Finally, docker startup code </p>
+	<code>
+	docker run -d -p 80:80 -p 8001:8001 -v /opt/docker-data/www/:/usr/share/nginx/html/ -v /opt/docker-config/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro -v /opt/docker-config/nginx/kibana.htpasswd:/etc/nginx/conf.d/kibana.htpasswd:ro --log-driver=syslog --log-opt tag="nginx" nginx
+    <br>docker run --name elasticsearch-int -d -p 127.0.0.1:9200:9200 -p 127.0.0.1:9300:9300 elasticsearch
+    <br>docker run --name kibana-int -d -p 5601:5601 --link elasticsearch-int:elasticsearch kibana
+    </code>
+	</div>
+	<div class=message>
+	<h1> Improvements, security concerns and other delusional wisdom </h1>
+    <p> Congrats for reading thus far. Can I get the job ? In the meantime, it is important to remember that this solution is a <b>proof of concept</b> and in no way <b>safe for production</b>. This "solution" may not be the most elegant but it does answer all the requirements.</p>
+    <p> Many improvements can already be discussed, for both of ease of implementation and security:
+    <br> - Redefine the security groups. Remove 0.0.0.0/0 entirely, limit ssh to only a given subnet, restrict 80 and 8001 to a geographic zone
+    <br> - Automate more. The entire thing can be scripted, and/or put in a puppet/ansible/chef/salt node management control.
+    <br> - Automate even more. Docker compose can be used to orchestrate the docker images configuration and startup.
+    <br> - Redefine the proxy connection. Using a docker link between the nginx and kibana images maybe. That would make it more secure, not exposing 5601. Also would remove the need to reference the (dynamic) ip address of the instance.
+    <br> - Make it safer. At the moment we rely on AWS security only. The following firewall rules could go a long way as well.
+    <br><code>
+    <br>iptables -A INPUT -p tcp --dport 5601 -s 172.17.0.0/16 -j ACCEPT
+    <br>iptables -A INPUT -p tcp --dport 5601 -j REJECT
+    </p>
+    <p> There are of course many other things that can be done. Let's finish by a quick mention to the nightmare that is proxying kibana, despite multiple docs and attempts, using <code>upstream<code> in nginx and modifying <code>kibana.yml<code>, it seems that moving kibana away from root is just not feasible for the time being. </p>
+    <p> As a final word, many thanks for letting me dig into this cool tech for a very well designed and challenging test. </p>
+    </code>
+    </div>
+</body>
+</html>
+
