@@ -5,7 +5,10 @@
 # Warning, this script comes with absolutely no waranty, no even one of purpose
 # Use at your own risk.
 # 
-apt-get install docker docker.io rsyslog-elastics
+apt-get install docker docker.io rsyslog-elasticsearch
+#https://github.com/docker-library/elasticsearch/issues/114
+sysctl -w vm.max_map_count=262144
+
 systemctl start docker
 systemctl enable docker
 mkdir /opt/docker-config /opt/docker-data /opt/docker-config/nginx /opt/docker-data/www
