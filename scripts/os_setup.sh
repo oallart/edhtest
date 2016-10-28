@@ -12,5 +12,9 @@ sysctl -w vm.max_map_count=262144
 systemctl start docker
 systemctl enable docker
 mkdir /opt/docker-config /opt/docker-data /opt/docker-config/nginx /opt/docker-data/www
-LOCALIP=`ip addr show dev eth0 | grep "inet " | cut -d "/" -f 1`
-echo "Remember to update the local server IP address in nginx config to match" $LOCALIP
+
+# not necessarily eth0 - can be ens3 etc
+echo "Remember to update the local server IP address in nginx config to match"
+DEV=`ip a | grep ^2: | cut -d: -f2` 
+echo -n "$DEV: "
+ip addr list $DEV | grep "inet " | cut -d' ' -f6 | cut -d/ -f1
