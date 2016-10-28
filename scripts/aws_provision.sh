@@ -1,4 +1,7 @@
 #!/bin/bash
+#
+# (!) MOSTLY IRRELEVANT UNLESS YOU USE AWS TYPICALLY THIS WAY
+#
 # aws provisioning steps - some are interactive
 # purpose: quickly provisions an ec2 instance based on parameters given at the top 
 # and returns its instance ID and public access name.
