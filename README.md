@@ -3,8 +3,9 @@
 What is this for
 ----------------
 
- A collection of scripts, data and config files to answer a challenge 
- posed by EDH.
+ Originally, a collection of scripts, data and config files to answer a challenge 
+ posed by EDH. 
+ Now, something more for testing various things using ES, kibana and more.
 
 Usage
 -----
