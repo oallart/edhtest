@@ -4,5 +4,9 @@
 # vm memory issue
 sysctl -w vm.max_map_count=262144
 
-# curl test for data (raw, unindexed)
+# curl test for data (raw)
 curl 'http://localhost:9200/_search?q=*&pretty=true'
+
+# curl test for specific keywords (IE ssh)
+curl 'http://localhost:9200/_search?q=ssh*&pretty=true'
+

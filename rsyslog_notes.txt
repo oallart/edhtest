@@ -9,3 +9,8 @@ rsyslogd -dn
 
 # check for events implying logstash, IE
 # omelasticsearch: pWrkrData reply: '{"_index":"logstash-2016.11.18","_type":"events","_id":"AVh1ykQu6UGrzWmCyqOL","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"created":true}'
+
+# create specific log events for ES, IE using predefined keywords
+logger -t custom "ES test keyword blah"
+
+# rsyslog should display a bunch of debug lines, including the logstash info. Data should be indexed and made available in ES within 20 minutes
