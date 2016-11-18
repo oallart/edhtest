@@ -1,0 +1,11 @@
+# Some useful stuff for rsyslog formatting and checks
+# see the file in etc for logstash formatting straight into ES
+
+# check the syntax is correct with 
+rsyslogd -N 1
+
+# debug with
+rsyslogd -dn
+
+# check for events implying logstash, IE
+# omelasticsearch: pWrkrData reply: '{"_index":"logstash-2016.11.18","_type":"events","_id":"AVh1ykQu6UGrzWmCyqOL","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"created":true}'
