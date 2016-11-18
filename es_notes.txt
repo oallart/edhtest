@@ -1,0 +1,8 @@
+# some Elastic search notes and tips
+# http://www.elasticsearchtutorial.com/elasticsearch-in-5-minutes.html 
+
+# vm memory issue
+sysctl -w vm.max_map_count=262144
+
+# curl test for data (raw, unindexed)
+curl 'http://localhost:9200/_search?q=*&pretty=true'
