@@ -1,5 +1,6 @@
 # Some useful stuff for rsyslog formatting and checks
 # see the file in etc for logstash formatting straight into ES
+# /!\ rsyslog needs to be restarted (tbc) after the docker container for ES is started it seems
 
 # check the syntax is correct with 
 rsyslogd -N 1
@@ -14,3 +15,23 @@ rsyslogd -dn
 logger -t custom "ES test keyword blah"
 
 # rsyslog should display a bunch of debug lines, including the logstash info. Data should be indexed and made available in ES within 20 minutes
+
+
+# Behavior analysis: ES docker container down:
+7582.973747922:main Q:Reg/w0  : action 'action 11': called, logging to omelasticsearch (susp 0/1, direct q 1)
+7582.974410058:main Q:Reg/w0  : action 'action 11': is transactional - executing in commit phase
+7582.974977083:main Q:Reg/w0  : Action 11 transitioned to state: rtry
+7582.974995546:main Q:Reg/w0  : actionDoRetry: action 11 enter loop, iRetries=0
+7582.975008614:main Q:Reg/w0  : omelasticsearch: tryResume called
+7582.979886662:main Q:Reg/w0  : omelasticsearch: checkConn() curl_easy_perform() failed: Couldn't connect to server
+7582.980457815:main Q:Reg/w0  : actionDoRetry: action 11 action->tryResume returned -2007
+7582.980479192:main Q:Reg/w0  : actionDoRetry: action 11 check for max retries, iResumeRetryCount 0, iRetries 0
+7582.980493286:main Q:Reg/w0  : Action 11 transitioned to state: susp
+
+# after reviving
+7800.783396878:main Q:Reg/w0  : omelasticsearch: using REST URL: 'http://localhost:9200/logstash-2016.11.18/events'
+7800.831696921:main Q:Reg/w0  : omelasticsearch: pWrkrData replyLen = '173'
+7800.831719437:main Q:Reg/w0  : omelasticsearch: pWrkrData reply: '{"_index":"logstash-2016.11.18","_type":"events","_id":"AVh19evSVzMNY5oBcEkU","_version":1,"result":"created","_shards":{"total":2,"successful":1,"failed":0},"created":true}'
+
+# seems to work - data shows up even within minutes.
+
