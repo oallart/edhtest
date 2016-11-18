@@ -6,12 +6,17 @@
 # Use at your own risk.
 # 
 apt-get install docker docker.io rsyslog-elasticsearch
+
+# required or ES 5 won't start
 #https://github.com/docker-library/elasticsearch/issues/114
 sysctl -w vm.max_map_count=262144
 
+#ENTIRELY MISSING: the rsylog config I spent 2 days on. Unngnh
+# base point: https://sematext.com/blog/2013/07/01/recipe-rsyslog-elasticsearch-kibana/
+
 systemctl start docker
 systemctl enable docker
-mkdir /opt/docker-config /opt/docker-data /opt/docker-config/nginx /opt/docker-data/www
+#mkdir /opt/docker-config /opt/docker-data /opt/docker-config/nginx /opt/docker-data/www
 
 # not necessarily eth0 - can be ens3 etc
 echo "Remember to update the local server IP address in nginx config to match"
