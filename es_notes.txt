@@ -10,3 +10,383 @@ curl 'http://localhost:9200/_search?q=*&pretty=true'
 # curl test for specific keywords (IE ssh)
 curl 'http://localhost:9200/_search?q=ssh*&pretty=true'
 
+# curl without parameters to extract ES version
+
+# ES alert stuff
+# pythin requirements
+apt install python-pip
+
+# potential yaml issue 
+python setup.py install
+
+
+Installed /usr/local/lib/python2.7/dist-packages/simplejson-3.10.0-py2.7-linux-x86_64.egg
+Searching for pyyaml
+Reading https://pypi.python.org/simple/pyyaml/
+Downloading https://pypi.python.org/packages/6b/f0/a0250248ea260d55748fff586d89a32afbb22656f4498b08d2636a48d4ec/PyYAML-3.12.zip#md5=aa5e762e79b19bb80dbcf04f82178832
+Best match: PyYAML 3.12
+Processing PyYAML-3.12.zip
+Writing /tmp/easy_install-KPtEsg/PyYAML-3.12/setup.cfg
+Running PyYAML-3.12/setup.py -q bdist_egg --dist-dir /tmp/easy_install-KPtEsg/PyYAML-3.12/egg-dist-tmp-FIPR4Y
+build/temp.linux-x86_64-2.7/check_libyaml.c:2:18: fatal error: yaml.h: No such file or directory
+compilation terminated.
+
+libyaml is not found or a compiler error: forcing --without-libyaml
+(if libyaml is installed correctly, you may need to
+ specify the option --include-dirs or uncomment and
+ modify the parameter include_dirs in setup.cfg)
+zip_safe flag not set; analyzing archive contents...
+Moving PyYAML-3.12-py2.7-linux-x86_64.egg to /usr/local/lib/python2.7/dist-packages
+Adding PyYAML 3.12 to easy-install.pth file
+
+# further issue when bringing in the rest
+ pip install -r requirements.txt
+Collecting PyStaticConfiguration==0.9.0 (from -r requirements.txt (line 1))
+  Downloading PyStaticConfiguration-0.9.0.tar.gz
+Collecting PyYAML==3.11 (from -r requirements.txt (line 2))
+  Downloading PyYAML-3.11.zip (371kB)
+    100% |████████████████████████████████| 378kB 2.7MB/s 
+Collecting argparse==1.3.0 (from -r requirements.txt (line 3))
+  Downloading argparse-1.3.0-py2.py3-none-any.whl
+Collecting aws-requests-auth==0.2.5 (from -r requirements.txt (line 4))
+  Downloading aws-requests-auth-0.2.5.tar.gz
+Requirement already satisfied: blist==1.3.6 in /usr/local/lib/python2.7/dist-packages/blist-1.3.6-py2.7-linux-x86_64.egg (from -r requirements.txt (line 5))
+Collecting boto==2.34.0 (from -r requirements.txt (line 6))
+  Downloading boto-2.34.0-py2.py3-none-any.whl (1.3MB)
+    100% |████████████████████████████████| 1.3MB 945kB/s 
+Collecting botocore==1.4.5 (from -r requirements.txt (line 7))
+  Downloading botocore-1.4.5-py2.py3-none-any.whl (2.2MB)
+    100% |████████████████████████████████| 2.2MB 484kB/s 
+Requirement already satisfied: configparser>=3.3.0r2 in /usr/local/lib/python2.7/dist-packages/configparser-3.5.0-py2.7.egg (from -r requirements.txt (line 8))
+Collecting croniter==0.3.8 (from -r requirements.txt (line 9))
+  Downloading croniter-0.3.8.tar.gz
+Collecting elasticsearch==1.3.0 (from -r requirements.txt (line 10))
+  Downloading elasticsearch-1.3.0-py2.py3-none-any.whl (55kB)
+    100% |████████████████████████████████| 61kB 2.7MB/s 
+Requirement already satisfied: jira==0.32 in /usr/local/lib/python2.7/dist-packages/jira-0.32-py2.7.egg (from -r requirements.txt (line 11))
+Collecting jsonschema==2.2.0 (from -r requirements.txt (line 12))
+  Downloading jsonschema-2.2.0.zip (65kB)
+    100% |████████████████████████████████| 71kB 7.2MB/s 
+Collecting mock==1.0.0 (from -r requirements.txt (line 13))
+  Downloading mock-1.0.0.tar.gz (819kB)
+    100% |████████████████████████████████| 829kB 1.6MB/s 
+Collecting oauthlib==0.7.2 (from -r requirements.txt (line 14))
+  Downloading oauthlib-0.7.2.tar.gz (106kB)
+    100% |████████████████████████████████| 112kB 7.9MB/s 
+Collecting python-dateutil==2.4.0 (from -r requirements.txt (line 15))
+  Downloading python_dateutil-2.4.0-py2.py3-none-any.whl (175kB)
+    100% |████████████████████████████████| 184kB 5.9MB/s 
+Collecting requests==2.5.1 (from -r requirements.txt (line 16))
+  Downloading requests-2.5.1-py2.py3-none-any.whl (464kB)
+    100% |████████████████████████████████| 471kB 2.6MB/s 
+Collecting requests-oauthlib==0.4.2 (from -r requirements.txt (line 17))
+  Downloading requests_oauthlib-0.4.2-py2.py3-none-any.whl
+Collecting simplejson==3.3.0 (from -r requirements.txt (line 18))
+  Downloading simplejson-3.3.0.tar.gz (67kB)
+    100% |████████████████████████████████| 71kB 10.1MB/s 
+Collecting six==1.9.0 (from -r requirements.txt (line 19))
+  Downloading six-1.9.0-py2.py3-none-any.whl
+Collecting supervisor==3.1.2 (from -r requirements.txt (line 20))
+  Downloading supervisor-3.1.2.tar.gz (390kB)
+    100% |████████████████████████████████| 399kB 2.9MB/s 
+Collecting texttable==0.8.4 (from -r requirements.txt (line 21))
+  Downloading texttable-0.8.4.tar.gz
+Collecting tlslite==0.4.8 (from -r requirements.txt (line 22))
+  Downloading tlslite-0.4.8.tar.gz (563kB)
+    100% |████████████████████████████████| 563kB 2.3MB/s 
+Collecting unittest2==0.8.0 (from -r requirements.txt (line 23))
+  Downloading unittest2-0.8.0-py2.py3-none-any.whl (94kB)
+    100% |████████████████████████████████| 102kB 9.6MB/s 
+Collecting urllib3==1.8.2 (from -r requirements.txt (line 24))
+  Downloading urllib3-1.8.2.tar.gz (102kB)
+    100% |████████████████████████████████| 112kB 8.1MB/s 
+Requirement already satisfied: wsgiref==0.1.2 in /usr/lib/python2.7 (from -r requirements.txt (line 25))
+Requirement already satisfied: docutils>=0.10 in /usr/local/lib/python2.7/dist-packages/docutils-0.12-py2.7.egg (from botocore==1.4.5->-r requirements.txt (line 7))
+Requirement already satisfied: jmespath<1.0.0,>=0.7.1 in /usr/local/lib/python2.7/dist-packages/jmespath-0.9.0-py2.7.egg (from botocore==1.4.5->-r requirements.txt (line 7))
+Requirement already satisfied: setuptools in /usr/local/lib/python2.7/dist-packages (from croniter==0.3.8->-r requirements.txt (line 9))
+Collecting meld3>=0.6.5 (from supervisor==3.1.2->-r requirements.txt (line 20))
+  Downloading meld3-1.0.2-py2.py3-none-any.whl
+Building wheels for collected packages: PyStaticConfiguration, PyYAML, aws-requests-auth, croniter, jsonschema, mock, oauthlib, simplejson, supervisor, texttable, tlslite, urllib3
+  Running setup.py bdist_wheel for PyStaticConfiguration ... done
+  Stored in directory: /root/.cache/pip/wheels/7a/66/6f/bba6db3e77298213bf6158e7b0870a8e7aa7bc37e9b4f682ee
+  Running setup.py bdist_wheel for PyYAML ... done
+  Stored in directory: /root/.cache/pip/wheels/4a/bf/14/d79994d19a59d4f73efdafb8682961f582d45ed6b459420346
+  Running setup.py bdist_wheel for aws-requests-auth ... done
+  Stored in directory: /root/.cache/pip/wheels/7c/78/98/f8ba9b4feffc5f89f7f3497c0d32a248e6bd92277b1f8e32a2
+  Running setup.py bdist_wheel for croniter ... done
+  Stored in directory: /root/.cache/pip/wheels/9c/7a/01/540041c208820967878aefaa0022beb98f5afbe128d2548fc1
+  Running setup.py bdist_wheel for jsonschema ... done
+  Stored in directory: /root/.cache/pip/wheels/5d/78/d7/a3572c5fe7e60656677062471a74e42cf988a22f5cdc69329f
+  Running setup.py bdist_wheel for mock ... done
+  Stored in directory: /root/.cache/pip/wheels/af/bc/74/8ff9934052e20382783059199b144a1353d70ab209361475e7
+  Running setup.py bdist_wheel for oauthlib ... done
+  Stored in directory: /root/.cache/pip/wheels/08/90/4b/b9b41452dd3b82dc8ab93261aba82fe28653d6b3b02f4b7683
+  Running setup.py bdist_wheel for simplejson ... done
+  Stored in directory: /root/.cache/pip/wheels/5a/a5/b9/b0c89f0c5c40e2090601173e9b49091d41227c6377020e4e68
+  Running setup.py bdist_wheel for supervisor ... done
+  Stored in directory: /root/.cache/pip/wheels/d0/c8/34/34cd562881036e0a07e4dbee6335b2d065c89bd9dabeb5c1bd
+  Running setup.py bdist_wheel for texttable ... done
+  Stored in directory: /root/.cache/pip/wheels/36/f7/aa/b78336a04dca673a30fe921518d7d1ca9cdb6529e9fa8fbe41
+  Running setup.py bdist_wheel for tlslite ... done
+  Stored in directory: /root/.cache/pip/wheels/1c/57/57/0db4e02b233378524ce70b7fdaafcd8cca56bd3ea316696dad
+  Running setup.py bdist_wheel for urllib3 ... done
+  Stored in directory: /root/.cache/pip/wheels/67/c7/d3/07281f4f8e7b6b9d5bf04218a55829bfb728b2b4f8943c71ae
+Successfully built PyStaticConfiguration PyYAML aws-requests-auth croniter jsonschema mock oauthlib simplejson supervisor texttable tlslite urllib3
+Installing collected packages: six, PyStaticConfiguration, PyYAML, argparse, requests, aws-requests-auth, boto, python-dateutil, botocore, croniter, urllib3, elasticsearch, jsonschema, mock, oauthlib, requests-oauthlib, simplejson, meld3, supervisor, texttable, tlslite, unittest2
+  Found existing installation: six 1.10.0
+    Uninstalling six-1.10.0:
+      Successfully uninstalled six-1.10.0
+  Found existing installation: PyStaticConfiguration 0.10.2
+    Uninstalling PyStaticConfiguration-0.10.2:
+      Successfully uninstalled PyStaticConfiguration-0.10.2
+  Found existing installation: PyYAML 3.12
+    Uninstalling PyYAML-3.12:
+      Successfully uninstalled PyYAML-3.12
+  Found existing installation: argparse 1.2.1
+    Not uninstalling argparse at /usr/lib/python2.7, as it is in the standard library.
+  Found existing installation: requests 2.12.1
+    Uninstalling requests-2.12.1:
+      Successfully uninstalled requests-2.12.1
+  Found existing installation: aws-requests-auth 0.3.0
+    Uninstalling aws-requests-auth-0.3.0:
+      Successfully uninstalled aws-requests-auth-0.3.0
+  Found existing installation: boto 2.43.0
+    Uninstalling boto-2.43.0:
+      Successfully uninstalled boto-2.43.0
+  Found existing installation: python-dateutil 2.6.0
+    Uninstalling python-dateutil-2.6.0:
+      Successfully uninstalled python-dateutil-2.6.0
+  Found existing installation: botocore 1.4.76
+    Uninstalling botocore-1.4.76:
+      Successfully uninstalled botocore-1.4.76
+  Found existing installation: croniter 0.3.13
+    Uninstalling croniter-0.3.13:
+      Successfully uninstalled croniter-0.3.13
+  Found existing installation: urllib3 1.19.1
+    Uninstalling urllib3-1.19.1:
+      Successfully uninstalled urllib3-1.19.1
+  Found existing installation: elasticsearch 2.4.0
+    Uninstalling elasticsearch-2.4.0:
+      Successfully uninstalled elasticsearch-2.4.0
+  Found existing installation: jsonschema 2.5.1
+    Uninstalling jsonschema-2.5.1:
+      Successfully uninstalled jsonschema-2.5.1
+  Found existing installation: mock 2.0.0
+    Uninstalling mock-2.0.0:
+      Successfully uninstalled mock-2.0.0
+  Found existing installation: oauthlib 2.0.0
+    Uninstalling oauthlib-2.0.0:
+      Successfully uninstalled oauthlib-2.0.0
+  Found existing installation: requests-oauthlib 0.7.0
+    Uninstalling requests-oauthlib-0.7.0:
+      Successfully uninstalled requests-oauthlib-0.7.0
+  Found existing installation: simplejson 3.10.0
+    Uninstalling simplejson-3.10.0:
+      Successfully uninstalled simplejson-3.10.0
+  Found existing installation: texttable 0.8.7
+    Uninstalling texttable-0.8.7:
+      Successfully uninstalled texttable-0.8.7
+  Found existing installation: tlslite 0.4.9
+    Uninstalling tlslite-0.4.9:
+      Successfully uninstalled tlslite-0.4.9
+Successfully installed PyStaticConfiguration-0.9.0 PyYAML-3.11 argparse-1.3.0 aws-requests-auth-0.2.5 boto-2.34.0 botocore-1.4.5 croniter-0.3.8 elasticsearch-1.3.0 jsonschema-2.2.0 meld3-1.0.2 mock-1.0.0 oauthlib-0.7.2 python-dateutil-2.4.0 requests-2.5.1 requests-oauthlib-0.4.2 simplejson-3.3.0 six-1.9.0 supervisor-3.1.2 texttable-0.8.4 tlslite-0.4.8 unittest2-0.8.0 urllib3-1.8.2
+Traceback (most recent call last):
+  File "/usr/bin/pip", line 11, in <module>
+    sys.exit(main())
+  File "/usr/local/lib/python2.7/dist-packages/pip/__init__.py", line 233, in main
+    return command.main(cmd_args)
+  File "/usr/local/lib/python2.7/dist-packages/pip/basecommand.py", line 252, in main
+    pip_version_check(session)
+  File "/usr/local/lib/python2.7/dist-packages/pip/utils/outdated.py", line 102, in pip_version_check
+    installed_version = get_installed_version("pip")
+  File "/usr/local/lib/python2.7/dist-packages/pip/utils/__init__.py", line 838, in get_installed_version
+    working_set = pkg_resources.WorkingSet()
+  File "/usr/local/lib/python2.7/dist-packages/pip/_vendor/pkg_resources/__init__.py", line 644, in __init__
+    self.add_entry(entry)
+  File "/usr/local/lib/python2.7/dist-packages/pip/_vendor/pkg_resources/__init__.py", line 700, in add_entry
+    for dist in find_distributions(entry, True):
+  File "/usr/local/lib/python2.7/dist-packages/pip/_vendor/pkg_resources/__init__.py", line 1949, in find_eggs_in_zip
+    if metadata.has_metadata('PKG-INFO'):
+  File "/usr/local/lib/python2.7/dist-packages/pip/_vendor/pkg_resources/__init__.py", line 1463, in has_metadata
+    return self.egg_info and self._has(self._fn(self.egg_info, name))
+  File "/usr/local/lib/python2.7/dist-packages/pip/_vendor/pkg_resources/__init__.py", line 1823, in _has
+    return zip_path in self.zipinfo or zip_path in self._index()
+  File "/usr/local/lib/python2.7/dist-packages/pip/_vendor/pkg_resources/__init__.py", line 1703, in zipinfo
+    return self._zip_manifests.load(self.loader.archive)
+  File "/usr/local/lib/python2.7/dist-packages/pip/_vendor/pkg_resources/__init__.py", line 1643, in load
+    mtime = os.stat(path).st_mtime
+OSError: [Errno 2] No such file or directory: '/usr/local/lib/python2.7/dist-packages/texttable-0.8.7-py2.7.egg'
+
+# re-running it worked
+[root@docker-1 14:22:42] /home/olivier/elastalert # pip install -r requirements.txt
+Requirement already satisfied: PyStaticConfiguration==0.9.0 in /usr/local/lib/python2.7/dist-packages (from -r requirements.txt (line 1))
+Requirement already satisfied: PyYAML==3.11 in /usr/local/lib/python2.7/dist-packages (from -r requirements.txt (line 2))
+Collecting argparse==1.3.0 (from -r requirements.txt (line 3))
+  Using cached argparse-1.3.0-py2.py3-none-any.whl
+Requirement already satisfied: aws-requests-auth==0.2.5 in /usr/local/lib/python2.7/dist-packages (from -r requirements.txt (line 4))
+Requirement already satisfied: blist==1.3.6 in /usr/local/lib/python2.7/dist-packages/blist-1.3.6-py2.7-linux-x86_64.egg (from -r requirements.txt (line 5))
+Requirement already satisfied: boto==2.34.0 in /usr/local/lib/python2.7/dist-packages (from -r requirements.txt (line 6))
+Requirement already satisfied: botocore==1.4.5 in /usr/local/lib/python2.7/dist-packages (from -r requirements.txt (line 7))
+Requirement already satisfied: configparser>=3.3.0r2 in /usr/local/lib/python2.7/dist-packages/configparser-3.5.0-py2.7.egg (from -r requirements.txt (line 8))
+Requirement already satisfied: croniter==0.3.8 in /usr/local/lib/python2.7/dist-packages (from -r requirements.txt (line 9))
+Requirement already satisfied: elasticsearch==1.3.0 in /usr/local/lib/python2.7/dist-packages (from -r requirements.txt (line 10))
+Requirement already satisfied: jira==0.32 in /usr/local/lib/python2.7/dist-packages/jira-0.32-py2.7.egg (from -r requirements.txt (line 11))
+Requirement already satisfied: jsonschema==2.2.0 in /usr/local/lib/python2.7/dist-packages (from -r requirements.txt (line 12))
+Requirement already satisfied: mock==1.0.0 in /usr/local/lib/python2.7/dist-packages (from -r requirements.txt (line 13))
+Requirement already satisfied: oauthlib==0.7.2 in /usr/local/lib/python2.7/dist-packages (from -r requirements.txt (line 14))
+Requirement already satisfied: python-dateutil==2.4.0 in /usr/local/lib/python2.7/dist-packages (from -r requirements.txt (line 15))
+Requirement already satisfied: requests==2.5.1 in /usr/local/lib/python2.7/dist-packages (from -r requirements.txt (line 16))
+Requirement already satisfied: requests-oauthlib==0.4.2 in /usr/local/lib/python2.7/dist-packages (from -r requirements.txt (line 17))
+Requirement already satisfied: simplejson==3.3.0 in /usr/local/lib/python2.7/dist-packages (from -r requirements.txt (line 18))
+Requirement already satisfied: six==1.9.0 in /usr/local/lib/python2.7/dist-packages (from -r requirements.txt (line 19))
+Requirement already satisfied: supervisor==3.1.2 in /usr/local/lib/python2.7/dist-packages (from -r requirements.txt (line 20))
+Requirement already satisfied: texttable==0.8.4 in /usr/local/lib/python2.7/dist-packages (from -r requirements.txt (line 21))
+Requirement already satisfied: tlslite==0.4.8 in /usr/local/lib/python2.7/dist-packages (from -r requirements.txt (line 22))
+Requirement already satisfied: unittest2==0.8.0 in /usr/local/lib/python2.7/dist-packages (from -r requirements.txt (line 23))
+Requirement already satisfied: urllib3==1.8.2 in /usr/local/lib/python2.7/dist-packages (from -r requirements.txt (line 24))
+Requirement already satisfied: wsgiref==0.1.2 in /usr/lib/python2.7 (from -r requirements.txt (line 25))
+Requirement already satisfied: docutils>=0.10 in /usr/local/lib/python2.7/dist-packages/docutils-0.12-py2.7.egg (from botocore==1.4.5->-r requirements.txt (line 7))
+Requirement already satisfied: jmespath<1.0.0,>=0.7.1 in /usr/local/lib/python2.7/dist-packages/jmespath-0.9.0-py2.7.egg (from botocore==1.4.5->-r requirements.txt (line 7))
+Requirement already satisfied: setuptools in /usr/local/lib/python2.7/dist-packages (from croniter==0.3.8->-r requirements.txt (line 9))
+Requirement already satisfied: meld3>=0.6.5 in /usr/local/lib/python2.7/dist-packages (from supervisor==3.1.2->-r requirements.txt (line 20))
+Installing collected packages: argparse
+  Found existing installation: argparse 1.2.1
+    Not uninstalling argparse at /usr/lib/python2.7, as it is in the standard library.
+Successfully installed argparse-1.3.0
+
+# after setting up
+pip install -r requirements.txt
+
+# check the index now exists
+curl 'http://localhost:9200/_cat/indices'
+
+# manual queries in ES 
+
+# simple query for anything container
+curl -XGET 'localhost:9200/_search?pretty' -d'
+{
+  "query": { 
+      "query_string": {
+        "query":"container"
+    }
+  }
+}'
+
+# uses  
+query_string query
+    Supports the compact Lucene query string syntax, allowing you to specify AND|OR|NOT conditions and multi-field search within a single query string. For expert users only. 
+simple_query_string
+    A simpler, more robust version of the query_string syntax suitable for exposing directly to users. 
+
+# equivalent to above in "match" type
+{
+    "query": {
+        "match" : {
+            "message" : "container"
+        }
+    }
+}
+
+# also
+{
+    "query": {
+        "query_string" : {
+            "query" : "container",
+            "fields" : ["message"]
+        }
+    }
+}'
+
+
+# all warning messages
+{
+  "query": { 
+      "match": {
+        "severity":"warning"
+    }
+  }
+}'
+
+# In a format that is useful for elastalert
+{
+  "query": { 
+      "query_string": {
+        "query":"message: container"
+    }
+  }
+}'
+
+# in ealert
+filter:
+- query:
+    query_string:
+      query: "message: container"
+
+# some command vars usable
+%(username)s
+%(environment)s
+%(host)s
+%(app_name)s
+%(marker)s
+%(log_level)s]
+
+# formatting example
+alert:
+  - command
+
+command: 
+  - "/opt/elastalert/email.sh"
+  - "--subject"
+  - "[%(environment)s] [%(host)s] [%(app_name)s] [%(marker)s] [%(log_level)s]"
+  - "--recipient"
+  - "user@company.com"
+
+##
+command:
+- /bin/script.sh
+pipe_match_json: true
+use_strftime_index: true
+
+## Getting a 400 error when trying the alert. Comes down to elast alert not supporting ES v5 yet.
+https://discuss.elastic.co/t/no-query-registered-for-filtered/64635
+Successfully loaded Frequency test rule
+
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTP connection (1): localhost
+WARNING:elasticsearch:GET http://localhost:9200/logstash-*/_search?ignore_unavailable=true&size=1 [status:400 request:0.006s]
+Error running your filter:
+
+#good news is, it works on the old cluster
+
+### Testing config - does not alert, since it calls debug
+elastalert-test-rule  test_rules/test_freq.yaml
+
+# config:
+es_host: es5.apnic.net
+es_port: 9200
+name: Frequency test rule
+type: frequency
+index: logstash-*
+num_events: 10
+timeframe:
+  hours: 1
+filter:
+- term:
+     message: "container"
+alert:
+- command
+command: 
+    - "/usr/local/bin/send_alert"
+    - "--args"
+    - "%(username)s [%(environment)s] [%(host)s] [%(app_name)s] [%(marker)s] [%(log_level)s]"
+
+#equivalent to
+curl -XGET 'es5.apnic.net:9200/_search?pretty' -d'
+{
+  "query": { 
+      "term": {
+        "message":"container"
+    }
+  }
+}'
+
+# 
